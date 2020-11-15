@@ -1,0 +1,19 @@
+diff --git a/ReactNativeClient/lib/services/keychain/KeychainServiceDriver.node.ts b/ReactNativeClient/lib/services/keychain/KeychainServiceDriver.node.ts
+index 5522622..ea3daf5 100644
+--- a/ReactNativeClient/lib/services/keychain/KeychainServiceDriver.node.ts
++++ b/ReactNativeClient/lib/services/keychain/KeychainServiceDriver.node.ts
+@@ -1,5 +1,4 @@
+ import KeychainServiceDriverBase from './KeychainServiceDriverBase';
+-import shim from 'lib/shim';
+ 
+ // keytar throws an error when system keychain is not present;
+ // even when keytar itself is installed.
+@@ -17,7 +16,7 @@ import shim from 'lib/shim';
+ 
+ let keytar:any;
+ try {
+-	keytar = (shim.isWindows() || shim.isMac()) && !shim.isPortable() ? require('keytar') : null;
++	keytar = null;
+ } catch (error) {
+ 	console.error('Cannot load keytar - keychain support will be disabled', error);
+ 	keytar = null;
